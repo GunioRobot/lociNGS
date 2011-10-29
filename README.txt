@@ -1,6 +1,6 @@
-lociNGS [v.1] README	
+lociNGS [v.1] README
 
-Copyright (C)  2011  Sarah M. Hird 
+Copyright (C)  2011  Sarah M. Hird
 Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the document entitled "GNU Free Documentation License".
 
 LOCINGS: a simple database for reformatting and displaying multi-locus datasets
@@ -31,7 +31,7 @@ LOCINGS: a simple database for reformatting and displaying multi-locus datasets
 4. IMPORTING DATA
 	4.1. Loci/fasta file(s)
 	4.2. SAM/BAM NGS data
-	4.3. Demographic data 
+	4.3. Demographic data
 5. THE lociNGS INTERFACE
 6. EXPORTING DATA
 	6.1. NEXUS format
@@ -53,19 +53,19 @@ The program is dependent on several other pieces of software. lociNGS was writte
 
 1.1 MongoDB
 1.1.1 Installation of MDB
-Go to www.mongodb.org/downloads; 
+Go to www.mongodb.org/downloads;
 Download correct version (if you don't know if your machine is 32 or 64 bit, see section 1.1.3.);
 Double click the downloaded file – this should unpack it into a folder called something like "mongodb-osx-x86_64-1.8.2" (I would rename this folder "MongoDB" but you don't have to);
 Move the MongoDB folder to Applications (or wherever you want to keep it. ***You will need mongod running every time you use lociNGS, so you should remember where you put the MongoDB folder.);
 Make the directory that stores the data by opening a terminal and typing "mkdir –p /data/db" (without the quotations)
-Go to the mongoDB folder, then the bin folder. 
+Go to the mongoDB folder, then the bin folder.
 Double click mongod. This should open a screen with something like this:
 
 Last login: Wed Aug  3 08:12:53 on ttys001
 /Applications/mongodb-osx-x86_64-1.8.1/bin/mongod ; exit;
 HappyPappy:~ shird$ /Applications/mongodb-osx-x86_64-1.8.1/bin/mongod ; exit;
 /Applications/mongodb-osx-x86_64-1.8.1/bin/mongod --help for help and startup options
-Wed Aug  3 09:13:53 [initandlisten] MongoDB starting : pid=11886 port=27017 dbpath=/data/db/ 64-bit 
+Wed Aug  3 09:13:53 [initandlisten] MongoDB starting : pid=11886 port=27017 dbpath=/data/db/ 64-bit
 Wed Aug  3 09:13:53 [initandlisten] db version v1.8.1, pdfile version 4.5
 Wed Aug  3 09:13:53 [initandlisten] git version: a429cd4f535b2499cc4130b06ff7c26f41c00f04
 Wed Aug  3 09:13:53 [initandlisten] build sys info: Darwin erh2.10gen.cc 9.6.0 Darwin Kernel Version 9.6.0: Mon Nov 24 17:37:00 PST 2008; root:xnu-1228.9.59~1/RELEASE_I386 i386 BOOST_LIB_VERSION=1_40
@@ -136,7 +136,7 @@ I think it's easiest to keep everything in one place, but you don't necessarily 
 	4.  README.txt
 	5.  locus folder of fasta files*
 	6.  BAM and BAI folder*
-	7.  Tab-delimited text file of demographic data* 
+	7.  Tab-delimited text file of demographic data*
 	8.  IMa2 input file (if formatting for IMa2 or Migrate, format described below)
 
 *These folders/files don't need to be in the lociNGS folder.
@@ -150,11 +150,11 @@ To run the program, open a terminal window and type "run_lociNGS.py". This shoul
 
 3. INPUT FORMATS
 3.1 Import types
-lociNGS uses three imports. 
+lociNGS uses three imports.
 [1] The first is a folder of files that contain loci in fasta format. These files should have ".fasta" as their final extension. The folder may be located anywhere.
 [2] The second import is a folder of indexed bam files from a short read aligner. Each bam (and corresponding .bai) file should correspond to an individual in the dataset. I'm working on getting sam format to work too, but for right now, indexed bam works best.
 [3] The third is a tab-delimited text file that contains demographic data for the individuals in the dataset. There must be at least two columns, labeled "Individual" and "Population", which contain information on the name of the individual (as it appears in locus files and BAM file names) and which population the individual came from (these can be numbers or letters). The file may contain as many columns as you'd like, they will appear on the "Summary Screen" of the program.
-*lociNGS will run and reformat loci if just [1] loci and [3] demographic data are entered. 
+*lociNGS will run and reformat loci if just [1] loci and [3] demographic data are entered.
 
 3.2 Locus Names **IMPORTANT**
 The names of the files from import [1] that correspond to loci need to match with the locus names in the BAM files, import [2]. Basically, if your loci are called "locus1", "locus2" and "locus3", the fasta files need to be called "locus1.fasta", "locus2.fasta" and "locus3.fasta" and the loci in your BAM file need to be "locus1", "locus2" and "locus3". There are a few exceptions - the locus file name comes from anything before the first "." in the locus file name - so the files could be called "locus1.aln.fasta" or "locus1.080911.fasta" as long as the prefix before the first "." matches the BAM loci. Also, the BAM loci may have prefixes, but this time, due to common GenBank annotation, you may add things to the BAM loci names with a "|" as a separator. So BAM loci may be called something like "gi|323|testdata|locus1" as long as the last piece of the header matches the fasta loci names.
@@ -172,12 +172,12 @@ gi|323|fakeData|08august2011|locus1
 
 4. IMPORTING DATA
 4.1 Loci/fasta file(s)
-Step 1 in the import menu will open a window where you should find and select the locus folder. After successful import, the lociNGS screen will tell you. The terminal window will print data as the files are read. It should be a lot of text that looks something like: 
+Step 1 in the import menu will open a window where you should find and select the locus folder. After successful import, the lociNGS screen will tell you. The terminal window will print data as the files are read. It should be a lot of text that looks something like:
 "Got this file:  /Users/shird/Desktop/juncoLoci/JUNCOmatic_63_aln.fasta
 locusFasta =  JUNCOmatic_63_aln.fasta ; individuals {'J12': 0, 'J09': 0, 'J18': 0, 'J19': 0, 'J01': 0, 'J17': 0, 'J03': 0, 'J11': 0, 'J05': 0, 'J04': 0, 'J10': 0, 'J06': 0} ; indInFasta ['J12', 'J09', 'J18', 'J19', 'J01', 'J17', 'J03', 'J11', 'J05', 'J04', 'J10', 'J06'] ; SNPs =  5 ; number alleles =  24 ; length =  284 ; path =  /Users/shird/Desktop/juncoLoci/JUNCOmatic_63_aln.fasta"
 
 4.2 SAM/BAM NGS data
-Step 2 will import the net-gen alignments - you should find and select the indexed sam or bam folder. lociNGS will update as the import is finished. The terminal window will print data as the files are read. It will look something like this for each file: 
+Step 2 will import the net-gen alignments - you should find and select the indexed sam or bam folder. lociNGS will update as the import is finished. The terminal window will print data as the files are read. It will look something like this for each file:
 "Got this folder: /Users/shird/Documents/Dropbox/juncoBam
 Got this file:  /Users/shird/Documents/Dropbox/juncoBam/J01.sorted.bam
 730
@@ -194,7 +194,7 @@ POP1"
 lociNGS has three screens meant to show you how much data is associated with each individual in your dataset. The first screen will display text updates as the program completes functions. The second is a summary screen where each individual is a row and the demographic data are the columns. There is also a "numLoci" column that displays the number of loci called for that particular individual. If you click one of these numLoci buttons, the third screen appears that displays the specific loci. On this screen there are five columns:
 Locus Name = the locus file/locus name
 Length = length of the locus
-Coverage_This_Ind = how many raw reads from this individual aligned to the locus. If this button is pressed, a fasta file is generated that contains these reads. This file will be printed to the directory that contains the lociNGS scripts. 
+Coverage_This_Ind = how many raw reads from this individual aligned to the locus. If this button is pressed, a fasta file is generated that contains these reads. This file will be printed to the directory that contains the lociNGS scripts.
 Number_Inds = how many individuals are present in the locus (fasta) file
 Coverage_Total = how many raw reads from any individual aligned to the locus. If this button is pressed, a fasta file that contains the reads is generated and printed to the lociNGS directory.
 
@@ -222,29 +222,29 @@ Also note, the same inheritance scalar and mutation model will be printed for ev
 
 6.3 Migrate format
 Migrate format requires that an IMa2 additional file be in the folder, but doesn't use the information – so if you just need Migrate output, leave the example IMa2InputFile.txt in the folder as is.
-	
-7. TEST DATA
-I've included a very small test dataset, containing four individuals and five loci. 
 
-8. WHAT IF...? 
+7. TEST DATA
+I've included a very small test dataset, containing four individuals and five loci.
+
+8. WHAT IF...?
 I've attempted compiling a list of potential problems - email me (please) if you encounter something not on this list so I can add it for other users.
 
-8.1. ...lociNGS won't start? 
+8.1. ...lociNGS won't start?
 If this ("pymongo.errors.AutoReconnect: could not find master/primary") is the last line of output printed to the terminal window, it means that mongod is not running. In the MongoDB/bin folder, double click on "mongod" then try starting lociNGS again.
- 
+
 8.2. ...locus screen coverage buttons all say "0"?
-This could be due to the name of the loci in the SAM/BAM files not corresponding correctly to the name of the fasta locus files. Double check by referring to section 3.2 above. 
+This could be due to the name of the loci in the SAM/BAM files not corresponding correctly to the name of the fasta locus files. Double check by referring to section 3.2 above.
 
 8.3. ...summary screen shows no data?
-This could be due to the names of individuals not corresponding correctly between individuals in the fasta files and the demographic data text file. The demographic table needs to have a minimum of two columns, "Individual" and "Population". Make sure the names of the indivdiuals are the same as the fasta files. 
+This could be due to the names of individuals not corresponding correctly between individuals in the fasta files and the demographic data text file. The demographic table needs to have a minimum of two columns, "Individual" and "Population". Make sure the names of the indivdiuals are the same as the fasta files.
 
 8.4. Problems with IMa2.
-The IMa2InputFile.txt needs to look almost exactly like the one I've provided. Please let me know if you have specific problems with any of the output formats. 
+The IMa2InputFile.txt needs to look almost exactly like the one I've provided. Please let me know if you have specific problems with any of the output formats.
 
 8.5. Problems with installation
-First, check that you are using Python 2.7. Open a terminal and type "python". You should see something like this: 
+First, check that you are using Python 2.7. Open a terminal and type "python". You should see something like this:
 
-Python 2.7.1 (r271:86882M, Nov 30 2010, 10:35:34) 
+Python 2.7.1 (r271:86882M, Nov 30 2010, 10:35:34)
 [GCC 4.2.1 (Apple Inc. build 5664)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
@@ -258,7 +258,7 @@ If your Python is version 2.5 or 2.6, try downloading Python 2.7 and reinstallin
 "import cython"
 (to exit the python prompt, type "exit()")
 
-If you get an error like: 
+If you get an error like:
 "Traceback (most recent call last):
 File "<stdin>", line 1, in <module>
 ImportError: No module named numpy"
@@ -267,7 +267,7 @@ then that package did not install correctly. You can go to the websites listed i
 If these suggestions do not work, please contact me with the error messages you're receiving and I'll try to help you get the program running. I understand there's something especially infuriating about buggy software, so please email me!
 
 9. CONTACT
-Please feel free to contact me about any issues you're having with lociNGS or the dependent software. I'd be more than happy to do what I can – 
+Please feel free to contact me about any issues you're having with lociNGS or the dependent software. I'd be more than happy to do what I can –
 
 Sarah Hird
 shird1@tigers.lsu.edu
